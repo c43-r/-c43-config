@@ -1,0 +1,97 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=10
+
+#[network]
+#label=W:
+#command=ip -o -4 addr list | grep -v 127.0.0.1 | awk '{print $4}' | cut -d/ -f1 | head -n1
+#interval=10
+
+#[network]
+##label=W:
+# 1. Gets SSID from iwd
+# 2. Gets IP from the ip command
+#command=SSID=$(iwctl station wlan0 show | awk '/Connected network/ {print $3}'); IP=$(ip -o -4 addr list | grep -v 127.0.0.1 | awk '{print $4}' | cut -d/ -f1 | head -n1); echo "$SSID $IP"
+#interval=5
+#[network]
+#label=W: 
+#command=DATA=$(iwctl station wlan0 show); SSID=$(echo "$DATA" | sed -n 's/.*Connected network *//p'); RSSI=$(echo "$DATA" | awk '/RSSI/ {print $2}'); IP=$(ip -o -4 addr list | grep -v 127.0.0.1 | awk '{print $4}' | cut -d/ -f1 | head -n1); if [ -z "$SSID" ]; then echo "Down"; else PERC=$(( (RSSI + 110) * 100 / 70 )); [ $PERC -gt 100 ] && PERC=100; [ $PERC -lt 0 ] && PERC=0; echo "$SSID ($PERC%) $IP"; fi
+#interval=5
+
+
+
+[ip]
+command=hostname -i | awk '{print $1}'
+interval=10
+
+#[documentation]
+#full_text=Documentation
+#website=https://vivien.github.io/i3blocks
+#command=xdg-open "$website"
+#color=#f12711
+
+#[greetings]
+#color=#f5af19
+#command=echo "Hello, $USER!"
+#interval=once
+#
+#[mod-website]
+#full_text=Hesitation is Defeat 
+#website=https://nexusmods.com/sekiro
+#command= xdg-open "$website"
+#color=#ff0000
+
+#[lms]
+#full_text=HELL
+#website=https://lmsug24.iiitkottayam.ac.in
+#command=xdg-open "$website"
+#color=#ff0000
+
+
+
+[memory]
+command=~/.config/i3blocks/memory_htop.sh
+interval=5 
+
+#[battery] 
+#command=cat /sys/class/power_supply/BAT1/capacity | awk '{print $1"%"}'
+#interval=20
+# Global properties
+#separator=true
+#separator_block_width=15
+
+#[network]
+#label=W: 
+#command=hostname -I | awk '{print $1}'
+#i#nterval=5
+#olor=#00FF00
+
+#[disk]
+#label=DISK: 
+# This version uses the GB format you asked for
+#command=df -k / | awk '/\// {printf "%.1f GB\n", $4/1024/1024}'
+#interval=30
+#color=#91E78B
+
+[battery]
+label= 
+# Ensure BAT0 is correct for your system
+command=cat /sys/class/power_supply/BAT1/capacity | awk '{print $1"%"}'
+interval=30
+color=#ff0000
+#[poweroff]
+#label=
+#command=systemctl poweroff
+#interval=1
+#[time]
+#label=IST: 
+#command=TZ='Asia/Kolkata' date '+%H:%M:%S'
+#interval=1

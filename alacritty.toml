@@ -1,0 +1,51 @@
+# --- GENERAL SETTINGS ---
+[general]
+# This is the "new configuration" way to import external files
+# You can point to themes, keybindings, or other partial configs.
+#import = [
+   # "~/.config/alacritty/themes/catppuccin-mocha.toml"
+#]
+
+# --- WINDOW SETTINGS ---
+[window]
+padding = { x = 10, y = 10 }
+dynamic_padding = true
+opacity = 1.00
+blur = true
+title = "Alacritty"
+
+[window.class]
+instance = "Alacritty"
+general = "Alacritty"
+
+# --- FONT SETTINGS ---
+[font]
+size = 9
+
+[font.normal]
+family = "JetBrainsMono Nerd Font" # Change to your preferred font
+style = "Regular"
+
+[font.bold]
+style = "Bold"
+
+# --- CURSOR SETTINGS ---
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+unfocused_hollow = true
+
+# --- MOUSE SETTINGS ---
+[selection]
+save_to_clipboard = true
+
+[colors.primary]
+background = '#000000'
+foreground = '#ffffff'
+
+[colors.normal]
+red = "#ff0000"
+black = "#282828"
+
+[colors.bright]
+red = "#ff0000"
+black = "#666666"

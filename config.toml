@@ -1,0 +1,62 @@
+[theme]
+theme = "srcery"
+
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents "
+format_alt = " $icon $mem_used "
+
+#[[block]]
+#block = "disk_up"
+#path = "/"
+#info_type = "available"
+#interval = 60
+#format = " $icon $available "
+
+[[block]]
+block = "battery"
+interval = 10
+format = " $icon $percentage $time "
+[[block.click]]
+button = "left"
+cmd="i3-msg exit"
+#[block.theme_overrides]
+#idle_bg = "#000000"
+#idle_fg = "#ff0000"
+
+[[block]]
+block = "sound"
+[[block.click]]
+button="left"
+cmd="pavucontrol"
+
+[[block]]
+block = "time"
+interval = 1
+format = " $timestamp.datetime(f:' %d/%m %R') "
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "Asia/Kolkata"
+format = " $timestamp.datetime(f:' %d/%m %R') "
+
+#[[block]]
+#block = "toggle"
+#text = " ?? " 
+#command = """
+ #   echo -e "Logout\nReboot\nShutdown" | rofi -dmenu | xargs -I{} bash -c "
+ #   case {} in 
+ #    Logout) i3-msg exit #;;
+  #   Reboot) reboot ;;
+ #    Shutdown) systemctl poweroff ;;
+ #   esac
+#""""
+#on-click = "left"
